@@ -1,5 +1,5 @@
 <?php
-class Lazyto_Cmd_FetchOne
+class Lazyto_Command_FetchOne extends Lazyto_Command_Abstract
 {
 	
 }
