@@ -1,5 +1,5 @@
 <?php
-class Lazyto_Res_FetchOne
+class Lazyto_Result_FetchOne extends Lazyto_Result_Abstract
 {
 	
 }
