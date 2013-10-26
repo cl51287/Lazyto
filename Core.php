@@ -1,6 +1,6 @@
 <?php
-require_once 'Lazyto/Cmd/Abstract.php';
-require_once 'Lazyto/Res/Abstract.php';
+require_once 'Lazyto/Command/Abstract.php';
+require_once 'Lazyto/Result/Abstract.php';
 require_once 'Lazyto/Dispatcher/Interface.php';
 class Lazyto_Core
 {
@@ -12,16 +12,28 @@ class Lazyto_Core
 	
 	private static $_instance	= null;
 	
+	private static $_isInit	= false;
+	
 	private function __construct()
 	{
+		
 	}
 	
 	public static function getInstance()
 	{
+		if (!self::$_isInit) {
+			throw new Lazyto_Exception('Lazyto is not initialized.');
+		}
+		
 		if (null === self::$_instance) {
 			self::$_instance	= new self();
 		}
 		return self::$_instance;
+	}
+	
+	public static function init()
+	{
+		
 	}
 	
 	/**
@@ -45,7 +57,7 @@ class Lazyto_Core
 	public function getDispatcher()
 	{
 		if (null === $this->_dispatcher) {
-			
+			$this->setDispatcher(new Lazyto_Dispatcher_Default());
 		}
 		return $this->_dispatcher;
 	}
