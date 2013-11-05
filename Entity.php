@@ -22,4 +22,5 @@ class Lazyto_Entity
 		
 		return new $classname($entityValues);
 	}
+
 }
